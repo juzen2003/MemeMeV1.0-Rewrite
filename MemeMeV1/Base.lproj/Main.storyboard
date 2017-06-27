@@ -22,29 +22,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oxr-Wg-9H1">
-                                <rect key="frame" x="67" y="223" width="240" height="221"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oxr-Wg-9H1">
+                                <rect key="frame" x="41" y="223" width="293" height="221"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c89-yh-bpB">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Pick" id="3LY-pu-g2b"/>
+                                    <barButtonItem title="Pick" id="3LY-pu-g2b">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="pux-OY-cTM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Camera" id="QXi-OW-a4s">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="Udw-y2-jtN"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IkO-v8-UvA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Oxr-Wg-9H1" secondAttribute="trailing" constant="25" id="OYm-eG-d0P"/>
                             <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ST9-1e-Spd"/>
                             <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="203" id="XjX-8p-uHg"/>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="si1-qY-lbV"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="cDP-4Z-EOV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ImagePickView" destination="Oxr-Wg-9H1" id="P5A-Yi-REm"/>
+                        <outlet property="cameraButton" destination="QXi-OW-a4s" id="GXa-hh-6hd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24.800000000000001" y="36.431784107946029"/>
+            <point key="canvasLocation" x="298" y="36"/>
         </scene>
     </scenes>
 </document>
