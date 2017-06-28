@@ -23,11 +23,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oxr-Wg-9H1">
-                                <rect key="frame" x="41" y="223" width="293" height="221"/>
+                                <rect key="frame" x="41" y="139" width="293" height="381"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c89-yh-bpB">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c89-yh-bpB">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Pick" id="3LY-pu-g2b">
                                         <connections>
@@ -41,24 +40,47 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YlW-yW-BSJ">
+                                <rect key="frame" x="41" y="139" width="293" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OCj-VG-isd">
+                                <rect key="frame" x="41" y="490" width="293" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IkO-v8-UvA"/>
+                            <constraint firstItem="c89-yh-bpB" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="LdG-yM-tP3"/>
+                            <constraint firstItem="OCj-VG-isd" firstAttribute="leading" secondItem="Oxr-Wg-9H1" secondAttribute="leading" id="Nh3-UL-fbl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Oxr-Wg-9H1" secondAttribute="trailing" constant="25" id="OYm-eG-d0P"/>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ST9-1e-Spd"/>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="203" id="XjX-8p-uHg"/>
+                            <constraint firstItem="OCj-VG-isd" firstAttribute="bottom" secondItem="Oxr-Wg-9H1" secondAttribute="bottom" id="RqY-CU-1ta"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-4" id="ST9-1e-Spd"/>
+                            <constraint firstItem="OCj-VG-isd" firstAttribute="centerX" secondItem="c89-yh-bpB" secondAttribute="centerX" id="X5S-dL-7Ka"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="119" id="XjX-8p-uHg"/>
+                            <constraint firstItem="OCj-VG-isd" firstAttribute="leading" secondItem="YlW-yW-BSJ" secondAttribute="leading" id="aKH-Q7-0UG"/>
+                            <constraint firstItem="OCj-VG-isd" firstAttribute="trailing" secondItem="Oxr-Wg-9H1" secondAttribute="trailing" id="b2p-0T-uEw"/>
                             <constraint firstItem="Oxr-Wg-9H1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="cDP-4Z-EOV"/>
+                            <constraint firstItem="YlW-yW-BSJ" firstAttribute="top" secondItem="Oxr-Wg-9H1" secondAttribute="top" id="hfJ-Gv-sIs"/>
+                            <constraint firstItem="YlW-yW-BSJ" firstAttribute="centerX" secondItem="Oxr-Wg-9H1" secondAttribute="centerX" id="oXa-kn-3pY"/>
+                            <constraint firstItem="c89-yh-bpB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yL9-fh-FmD"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ImagePickView" destination="Oxr-Wg-9H1" id="P5A-Yi-REm"/>
+                        <outlet property="bottomTextField" destination="OCj-VG-isd" id="ZZ4-GM-XsF"/>
                         <outlet property="cameraButton" destination="QXi-OW-a4s" id="GXa-hh-6hd"/>
+                        <outlet property="topTextField" destination="YlW-yW-BSJ" id="qRR-mN-Gex"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="298" y="36"/>
+            <point key="canvasLocation" x="296.80000000000001" y="35.532233883058474"/>
         </scene>
     </scenes>
 </document>

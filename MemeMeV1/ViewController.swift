@@ -8,14 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var ImagePickView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
+    
+    let imagePickerView = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.imagePickerView.delegate = self
+        self.topTextField.delegate = self
+        self.bottomTextField.delegate = self
+        setDefaultTextField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,23 +42,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // present image picker for different sourceType
     func presentImagePicker(_ source: UIImagePickerControllerSourceType) {
-        let imagePickerView = UIImagePickerController()
-        imagePickerView.delegate = self
         imagePickerView.sourceType = source
         self.present(imagePickerView, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.ImagePickView.image = image
         }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
- 
+    
+    // clear default text when user tap textfield
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "TOP" || textField.text == "BOTTOM" {
+            textField.text = ""
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func setDefaultTextField() {
+        self.topTextField.text = "TOP"
+        self.bottomTextField.text = "BOTTOM"
+        self.topTextField.textAlignment = .center
+        self.bottomTextField.textAlignment = .center
+    }
 
 }
 
