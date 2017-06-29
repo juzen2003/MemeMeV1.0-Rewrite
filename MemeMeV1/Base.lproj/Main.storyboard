@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oxr-Wg-9H1">
-                                <rect key="frame" x="41" y="139" width="293" height="381"/>
+                                <rect key="frame" x="41" y="28" width="293" height="565"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c89-yh-bpB">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -41,16 +41,16 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YlW-yW-BSJ">
-                                <rect key="frame" x="41" y="139" width="293" height="30"/>
+                                <rect key="frame" x="41" y="28" width="293" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OCj-VG-isd">
-                                <rect key="frame" x="41" y="490" width="293" height="30"/>
+                                <rect key="frame" x="41" y="563" width="293" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,9 +60,9 @@
                             <constraint firstItem="OCj-VG-isd" firstAttribute="leading" secondItem="Oxr-Wg-9H1" secondAttribute="leading" id="Nh3-UL-fbl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Oxr-Wg-9H1" secondAttribute="trailing" constant="25" id="OYm-eG-d0P"/>
                             <constraint firstItem="OCj-VG-isd" firstAttribute="bottom" secondItem="Oxr-Wg-9H1" secondAttribute="bottom" id="RqY-CU-1ta"/>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-4" id="ST9-1e-Spd"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-23" id="ST9-1e-Spd"/>
                             <constraint firstItem="OCj-VG-isd" firstAttribute="centerX" secondItem="c89-yh-bpB" secondAttribute="centerX" id="X5S-dL-7Ka"/>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="119" id="XjX-8p-uHg"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="XjX-8p-uHg"/>
                             <constraint firstItem="OCj-VG-isd" firstAttribute="leading" secondItem="YlW-yW-BSJ" secondAttribute="leading" id="aKH-Q7-0UG"/>
                             <constraint firstItem="OCj-VG-isd" firstAttribute="trailing" secondItem="Oxr-Wg-9H1" secondAttribute="trailing" id="b2p-0T-uEw"/>
                             <constraint firstItem="Oxr-Wg-9H1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="cDP-4Z-EOV"/>

@@ -71,11 +71,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func setDefaultTextField() {
+        self.topTextField.defaultTextAttributes = memeTextAttributes
+        self.bottomTextField.defaultTextAttributes = memeTextAttributes
+        self.topTextField.borderStyle = .none
+        self.bottomTextField.borderStyle = .none
         self.topTextField.text = "TOP"
         self.bottomTextField.text = "BOTTOM"
         self.topTextField.textAlignment = .center
         self.bottomTextField.textAlignment = .center
     }
+    
+    // textField attributes
+    let memeTextAttributes: [String:Any] = [
+        NSStrokeColorAttributeName: UIColor.black,
+        NSForegroundColorAttributeName: UIColor.white,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        // a zero value for stroke width indicates fill with no stroke
+        // a positive value makes a stroke with no fill
+        // a negative value for stroke width creates both a fill and stroke
+        NSStrokeWidthAttributeName: NSNumber(value: -5.0)
+        
+    ]
 
 }
 
