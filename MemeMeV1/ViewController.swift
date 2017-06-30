@@ -30,6 +30,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(true)
         // diabled camera button if no camera available
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        //subscribe to be notified when keyboard appears
+        self.subscribeToKeyboardNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        // unsubscribe the notification
+        self.unSubscribeToKeyboardNotification()
     }
 
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
@@ -90,8 +99,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // a positive value makes a stroke with no fill
         // a negative value for stroke width creates both a fill and stroke
         NSStrokeWidthAttributeName: NSNumber(value: -5.0)
-        
     ]
+    
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        // notification carries info in userInfo dictionary
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        
+        return keyboardSize.cgRectValue.height
+    }
+    
+    // move the view up when UIKeyboardWillShow occurs
+    func keyboardWillShow(_ notification: Notification) {
+        if self.bottomTextField.isFirstResponder {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+    }
+    
+    // move back the view when UIKeyboardWillHide occurs
+    func keyboardWillHide(_ notification: Notification) {
+        self.view.frame.origin.y = 0
+    }
+    
+    // when even UIKeyboardWillShow occurs, the method keyboardWillShow is called
+    // when even UIKeyboardWillHide occurs, the method keyboardWillHide is called
+    func subscribeToKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func unSubscribeToKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
 
 }
 

@@ -55,19 +55,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IkO-v8-UvA"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="668-Pj-frn"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="bottom" secondItem="OCj-VG-isd" secondAttribute="bottom" id="FPv-Ye-x90"/>
                             <constraint firstItem="c89-yh-bpB" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="LdG-yM-tP3"/>
-                            <constraint firstItem="OCj-VG-isd" firstAttribute="leading" secondItem="Oxr-Wg-9H1" secondAttribute="leading" id="Nh3-UL-fbl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Oxr-Wg-9H1" secondAttribute="trailing" constant="25" id="OYm-eG-d0P"/>
-                            <constraint firstItem="OCj-VG-isd" firstAttribute="bottom" secondItem="Oxr-Wg-9H1" secondAttribute="bottom" id="RqY-CU-1ta"/>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-23" id="ST9-1e-Spd"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="trailing" secondItem="OCj-VG-isd" secondAttribute="trailing" id="SgF-XN-edx"/>
+                            <constraint firstItem="c89-yh-bpB" firstAttribute="top" secondItem="Oxr-Wg-9H1" secondAttribute="bottom" constant="30" id="Vls-cf-ltt"/>
                             <constraint firstItem="OCj-VG-isd" firstAttribute="centerX" secondItem="c89-yh-bpB" secondAttribute="centerX" id="X5S-dL-7Ka"/>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="XjX-8p-uHg"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="XxR-fY-PPT"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="leading" secondItem="OCj-VG-isd" secondAttribute="leading" id="YgX-2e-VP9"/>
                             <constraint firstItem="OCj-VG-isd" firstAttribute="leading" secondItem="YlW-yW-BSJ" secondAttribute="leading" id="aKH-Q7-0UG"/>
-                            <constraint firstItem="OCj-VG-isd" firstAttribute="trailing" secondItem="Oxr-Wg-9H1" secondAttribute="trailing" id="b2p-0T-uEw"/>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="cDP-4Z-EOV"/>
-                            <constraint firstItem="YlW-yW-BSJ" firstAttribute="top" secondItem="Oxr-Wg-9H1" secondAttribute="top" id="hfJ-Gv-sIs"/>
-                            <constraint firstItem="YlW-yW-BSJ" firstAttribute="centerX" secondItem="Oxr-Wg-9H1" secondAttribute="centerX" id="oXa-kn-3pY"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="YlW-yW-BSJ" secondAttribute="top" id="aUE-ma-7XW"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="trailing" secondItem="YlW-yW-BSJ" secondAttribute="trailing" id="c0H-BO-98b"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kE4-yB-heP"/>
                             <constraint firstItem="c89-yh-bpB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yL9-fh-FmD"/>
                         </constraints>
                     </view>
