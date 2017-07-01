@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMeV1
 //
 //  Created by Yu-Jen Chang on 6/26/17.
@@ -8,30 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    
     @IBOutlet weak var ImagePickView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+    
     let imagePickerView = UIImagePickerController()
+    let textFieldDelegate = TextFieldDelegate()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.imagePickerView.delegate = self
-        self.topTextField.delegate = self
-        self.bottomTextField.delegate = self
-        setDefaultTextField()
+        setDefaultTextField(self.topTextField, initText: "TOP")
+        setDefaultTextField(self.bottomTextField, initText: "BOTTOM")
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         // diabled camera button if no camera available
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
-        //subscribe to be notified when keyboard appears
         self.subscribeToKeyboardNotification()
     }
     
@@ -41,10 +42,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.unSubscribeToKeyboardNotification()
     }
 
+    
+    // Pick button
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         presentImagePicker(.photoLibrary)
     }
     
+    
+    // Camera button
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         presentImagePicker(.camera)
     }
@@ -55,59 +60,53 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(imagePickerView, animated: true, completion: nil)
     }
     
+    
+    // present image when user selects an image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.ImagePickView.image = image
         }
-        
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    // dismiss imagePickerView when user hits cancel
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    // clear default text when user tap textfield
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == "TOP" || textField.text == "BOTTOM" {
-            textField.text = ""
-        }
+    
+    // initialize textField
+    func setDefaultTextField(_ textField: UITextField!, initText: String) {
+        textField.delegate = textFieldDelegate
+        
+        // textField attributes
+        let memeTextAttributes: [String:Any] = [
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            // a zero value for stroke width indicates fill with no stroke
+            // a positive value makes a stroke with no fill
+            // a negative value for stroke width creates both a fill and stroke
+            NSStrokeWidthAttributeName: NSNumber(value: -5.0)
+        ]
+        
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.text = initText
+        textField.borderStyle = .none
+        textField.textAlignment = .center
+        textField.backgroundColor = UIColor.clear
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
     
-    func setDefaultTextField() {
-        self.topTextField.defaultTextAttributes = memeTextAttributes
-        self.bottomTextField.defaultTextAttributes = memeTextAttributes
-        self.topTextField.borderStyle = .none
-        self.bottomTextField.borderStyle = .none
-        self.topTextField.text = "TOP"
-        self.bottomTextField.text = "BOTTOM"
-        self.topTextField.textAlignment = .center
-        self.bottomTextField.textAlignment = .center
-    }
-    
-    // textField attributes
-    let memeTextAttributes: [String:Any] = [
-        NSStrokeColorAttributeName: UIColor.black,
-        NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        // a zero value for stroke width indicates fill with no stroke
-        // a positive value makes a stroke with no fill
-        // a negative value for stroke width creates both a fill and stroke
-        NSStrokeWidthAttributeName: NSNumber(value: -5.0)
-    ]
-    
+    // get keyboard height
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
         // notification carries info in userInfo dictionary
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        
         return keyboardSize.cgRectValue.height
     }
+    
     
     // move the view up when UIKeyboardWillShow occurs
     func keyboardWillShow(_ notification: Notification) {
@@ -116,18 +115,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    
     // move back the view when UIKeyboardWillHide occurs
     func keyboardWillHide(_ notification: Notification) {
         self.view.frame.origin.y = 0
     }
     
+    
     // when even UIKeyboardWillShow occurs, the method keyboardWillShow is called
     // when even UIKeyboardWillHide occurs, the method keyboardWillHide is called
+    // subscribe to be notified when keyboard appears/hide
     func subscribeToKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
+    
+    // remove keyboard notification
     func unSubscribeToKeyboardNotification() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
