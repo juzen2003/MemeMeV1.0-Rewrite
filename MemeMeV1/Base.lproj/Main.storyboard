@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rDs-p0-jh8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oxr-Wg-9H1">
-                                <rect key="frame" x="41" y="28" width="293" height="565"/>
+                                <rect key="frame" x="41" y="116" width="293" height="477"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c89-yh-bpB">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -41,7 +41,7 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YlW-yW-BSJ">
-                                <rect key="frame" x="41" y="28" width="293" height="30"/>
+                                <rect key="frame" x="41" y="116" width="293" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -61,7 +61,7 @@
                             <constraint firstItem="Oxr-Wg-9H1" firstAttribute="trailing" secondItem="OCj-VG-isd" secondAttribute="trailing" id="SgF-XN-edx"/>
                             <constraint firstItem="c89-yh-bpB" firstAttribute="top" secondItem="Oxr-Wg-9H1" secondAttribute="bottom" constant="30" id="Vls-cf-ltt"/>
                             <constraint firstItem="OCj-VG-isd" firstAttribute="centerX" secondItem="c89-yh-bpB" secondAttribute="centerX" id="X5S-dL-7Ka"/>
-                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="XxR-fY-PPT"/>
+                            <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="52" id="XxR-fY-PPT"/>
                             <constraint firstItem="Oxr-Wg-9H1" firstAttribute="leading" secondItem="OCj-VG-isd" secondAttribute="leading" id="YgX-2e-VP9"/>
                             <constraint firstItem="OCj-VG-isd" firstAttribute="leading" secondItem="YlW-yW-BSJ" secondAttribute="leading" id="aKH-Q7-0UG"/>
                             <constraint firstItem="Oxr-Wg-9H1" firstAttribute="top" secondItem="YlW-yW-BSJ" secondAttribute="top" id="aUE-ma-7XW"/>
@@ -70,14 +70,46 @@
                             <constraint firstItem="c89-yh-bpB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yL9-fh-FmD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="XUg-qJ-CSp">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="kFK-fa-Ycz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="w8M-Ah-XWU">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="shareMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kPT-1I-1fH"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ImagePickView" destination="Oxr-Wg-9H1" id="P5A-Yi-REm"/>
                         <outlet property="bottomTextField" destination="OCj-VG-isd" id="ZZ4-GM-XsF"/>
                         <outlet property="cameraButton" destination="QXi-OW-a4s" id="GXa-hh-6hd"/>
+                        <outlet property="shareButton" destination="w8M-Ah-XWU" id="wzF-Om-l2U"/>
+                        <outlet property="toolBar" destination="c89-yh-bpB" id="e02-nU-Gbh"/>
                         <outlet property="topTextField" destination="YlW-yW-BSJ" id="qRR-mN-Gex"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1236" y="35.532233883058474"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tzv-on-J5X">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rDs-p0-jh8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2KB-vK-gFC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aoq-dt-a6R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Cx-VE-6QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="296.80000000000001" y="35.532233883058474"/>
         </scene>
