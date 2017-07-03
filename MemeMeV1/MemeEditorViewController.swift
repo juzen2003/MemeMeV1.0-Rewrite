@@ -26,9 +26,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imagePickerView.delegate = self
-        setDefaultTextField(self.topTextField, initText: "TOP")
-        setDefaultTextField(self.bottomTextField, initText: "BOTTOM")
-        self.shareButton.isEnabled = false
+        self.initViewSetup()
     }
     
     
@@ -39,12 +37,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.subscribeToKeyboardNotification()
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         // unsubscribe the notification
         self.unSubscribeToKeyboardNotification()
     }
-
+    
+    
+    // hide status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     // Pick button
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
@@ -56,6 +60,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         presentImagePicker(.camera)
     }
+    
+    
+    // init view
+    func initViewSetup() {
+        setDefaultTextField(self.topTextField, initText: "TOP")
+        setDefaultTextField(self.bottomTextField, initText: "BOTTOM")
+        self.shareButton.isEnabled = false
+        self.ImagePickView.image = nil
+    }
+    
     
     // present image picker for different sourceType
     func presentImagePicker(_ source: UIImagePickerControllerSourceType) {
@@ -141,7 +155,25 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
+    
+    // share button
     @IBAction func shareMeme(_ sender: Any) {
+        let image = generateMemedImage()
+        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+        // save memedImage
+        activityVC.completionWithItemsHandler = {
+            (activitType, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
+            // Return if cancelled
+            if (!completed) {
+                return
+            } else {
+                self.save(memedImage: image)
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        }
     }
     
     // save memedImage
@@ -166,6 +198,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         navigationController?.isNavigationBarHidden = false
         
         return memedImage
+    }
+
+    
+    // return to original view
+    @IBAction func cancel(_ sender: Any) {
+        self.initViewSetup()
     }
 
 }
